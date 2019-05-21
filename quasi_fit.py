@@ -1,13 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import ipywidgets as widgets
 
 def quasi(Cbx,tXr,T,tTnr,tTr,Nb):   #quasi is for interact function at the end
     G = []
     NxY = []
     Ghigh = 110        #high bound of Generation rate 10^(Ghighx0.2)
     Glow = 75          #low bound of Generation rate 10^(Glowx0.2)
-    Nxh = [8*10**14]   #high bound of exciton concentration used for brute force algorism
-    Nxl = [0]          #lwo bound of exciton concentration used for brute force algorism
+    Nxh = [8*10**14]   #high bound of exciton concentration used for brute force algorithm
+    Nxl = [0]          #low bound of exciton concentration used for brute force algorithm
     tT = 1/(1/tTnr+1/tTr)
     Generation = [10**(0.2*p) for p in range(Glow,Ghigh)]
     
@@ -55,3 +56,15 @@ def quasi(Cbx,tXr,T,tTnr,tTr,Nb):   #quasi is for interact function at the end
     plt.xlabel('Generation rate (cm^-2)', size = 15)
     plt.ylabel('Recombination rate (cm^-2)', size = 15)
     plt.legend(framealpha=1, frameon=True, prop={'size': 13});
+
+def run_widget():
+    widgets.interact(quasi, 
+         Cbx = widgets.FloatText(value=0.06,description='Cbx (cm^2/s):',disabled=False),
+         tXr = widgets.FloatText(value=1.9*10**-9,description='tXr (s):',disabled=False),
+         tTr = widgets.FloatText(value=1*10**-6,description='tTr (s):',disabled=False),
+         tTnr = widgets.FloatText(value=1*10**-9,description='tTnr (s):',disabled=False),
+         T = widgets.FloatText(value=3.5*10**-10,description='T(cm^2):',disabled=False),
+         Nb = widgets.FloatText(value=2*10**10,description='N (cm^-2):',disabled=False));
+
+if __name__ == '__main__':
+    run_widget()
