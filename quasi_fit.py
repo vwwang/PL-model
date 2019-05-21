@@ -36,10 +36,10 @@ def quasi(Cbx,tXr,T,tTnr,tTr,Nb):   #quasi is for interact function at the end
     plt.figure(figsize=(11, 5))
     plt.subplot(121)
     plt.plot(Generation, QY, 'go', markersize=5)
-    plt.yscale('log')
-    plt.ylim(0.01, 100)
-    plt.xscale('log')
-    plt.xlabel('Generation rate (cm^-2)', size = 15)
+    plt.yscale('log');
+    plt.ylim(0.01, 100);
+    plt.xscale('log');
+    plt.xlabel('Generation rate (cm^-2)', size = 15);
     plt.ylabel('PL QY (%)', size = 15);
     
     RXr = [NxY[i]/tXr for i in range(len(NxY))]
@@ -51,11 +51,12 @@ def quasi(Cbx,tXr,T,tTnr,tTr,Nb):   #quasi is for interact function at the end
     plt.plot(Generation, RXX, 'r--', label = 'XX')
     plt.plot(Generation, RTr, 'bs',label = 'Tr')
     plt.plot(Generation, RTnr, 'b--', label = 'Tnr')
-    plt.yscale('log')
-    plt.xscale('log')
-    plt.xlabel('Generation rate (cm^-2)', size = 15)
-    plt.ylabel('Recombination rate (cm^-2)', size = 15)
+    plt.yscale('log');
+    plt.xscale('log');
+    plt.xlabel('Generation rate (cm^-2)', size = 15);
+    plt.ylabel('Recombination rate (cm^-2)', size = 15);
     plt.legend(framealpha=1, frameon=True, prop={'size': 13});
+    plt.show();
 
 def run_widget():
     widgets.interact(quasi, 
